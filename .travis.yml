@@ -16,4 +16,5 @@ deploy:
   on:
     branch: master
   local_dir: build
+
 before_deploy: yarn run build

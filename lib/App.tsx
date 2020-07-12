@@ -1,11 +1,7 @@
 import React from 'react';
 
-function App() {
-  return (
-    <>
-      To be developed...
-    </>
-  );
-}
+const App: React.FC = () => {
+  return <>To be developed...</>;
+};
 
 export default App;

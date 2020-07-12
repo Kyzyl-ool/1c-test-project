@@ -2,7 +2,6 @@
 // https://jestjs.io/docs/en/configuration.html
 
 module.exports = {
-  maxWorkers: "50%",
   moduleDirectories: [
     "node_modules",
     "lib"
@@ -13,8 +12,7 @@ module.exports = {
     "jsx",
     "js",
   ],
-  runner: "jest-runner-tsc",
-  testEnvironment: "node",
+  testEnvironment: "jsdom",
   testMatch: [
     "**/__tests__/**/*.[jt]s?(x)",
     "**/?(*.)+(spec|test).[tj]s?(x)"
@@ -28,5 +26,10 @@ module.exports = {
   },
   verbose: false,
   setupFilesAfterEnv: ["<rootDir>/setupTests.js"],
-  prettierPath: '<rootDir>/node_modules/prettier'
+  prettierPath: '<rootDir>/node_modules/prettier',
+  globals: {
+    window: {
+
+    }
+  }
 };
