@@ -13,7 +13,7 @@ module.exports = {
     main: './lib/index.tsx'
   },
   output: {
-    publicPath: '/',
+    publicPath: '/1c-test-project',
     path: __dirname + '/build',
     filename: '[name].[hash].js'
   },
