@@ -1,8 +1,8 @@
-# Тестовое задание 1С
+# Приложение для учета личных финансов.
+
 [![Build Status](https://travis-ci.com/Kyzyl-ool/1c-test-project.svg?branch=master)](https://travis-ci.com/Kyzyl-ool/1c-test-project)
 
-
-## Приложение для учета личных финансов.
+Ссылка на приложение: https://kyzyl-ool.github.io/1c-test-project/
 
 Предполагается, что приложение будет полностью клиентским.
 
