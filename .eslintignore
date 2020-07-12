@@ -1,0 +1,9 @@
+**/node_modules/**
+**/*.svg
+*.scss
+**/styles/**
+**/mock-server/**
+**/auth-server/**
+jest.config.js
+setupTests.js
+babel.config.js
