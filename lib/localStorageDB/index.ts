@@ -1,4 +1,6 @@
 import 'localstoragedb';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import * as lDB from 'localstoragedb/localstoragedb';
 
 export const localDB: localStorageDB = new lDB.default('localDB');
