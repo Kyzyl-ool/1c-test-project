@@ -5,10 +5,13 @@ import { BrowserRouter } from 'react-router-dom';
 import { Alert } from 'antd';
 import { Provider } from 'react-redux';
 import configureStore from 'store/configureStore';
+import 'antd/dist/antd.css';
+import { initDB } from './localStorageDB';
 
 const { ErrorBoundary } = Alert;
 
 const store = configureStore({});
+initDB();
 
 ReactDOM.render(
   <ErrorBoundary>
