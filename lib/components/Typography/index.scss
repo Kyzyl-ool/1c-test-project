@@ -1,0 +1,49 @@
+@import "~styles/palette.scss";
+
+.text {
+
+  &_sm {
+    font-size: 12px;
+    line-height: 22px;
+  }
+
+  &_base {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  &_lg {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  &_linked {
+    font-weight: bold;
+    color: $primary-color;
+    cursor: pointer;
+  }
+
+  &_header-color {
+    color: $heading-color !important;
+  }
+
+  &_black-color {
+    color: #000 !important;
+  }
+
+  &_white-color {
+    color: $white-color !important;
+  }
+
+  &_block {
+    display: block;
+  }
+
+  &_inline {
+    display: inline;
+  }
+
+  &_nowrap {
+    white-space: nowrap;
+  }
+}

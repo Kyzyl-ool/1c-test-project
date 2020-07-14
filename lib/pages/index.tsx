@@ -1,4 +1,7 @@
 import React from 'react';
+import { StatisticsWrapper } from './main/content/statistics/wrapper';
+import { RecordsPage } from './records';
+import { SettingsPage } from 'pages/settings';
 
 type Page = {
   path: string;
@@ -14,12 +17,17 @@ export const pages: Page[] = [
   },
   {
     path: '/statistics',
-    content: <>Stats</>,
+    content: <StatisticsWrapper />,
     name: 'Статистика'
   },
   {
     path: '/records',
-    content: <>Records</>,
-    name: 'Записи'
+    content: <RecordsPage />,
+    name: 'Записи и категории'
+  },
+  {
+    path: '/settings',
+    content: <SettingsPage />,
+    name: 'Настройки'
   }
 ];

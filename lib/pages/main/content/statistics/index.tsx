@@ -1,0 +1,72 @@
+import React, { useLayoutEffect, useRef } from 'react';
+import * as am4core from '@amcharts/amcharts4/core';
+import * as am4charts from '@amcharts/amcharts4/charts';
+import * as am4plugins_sunburst from '@amcharts/amcharts4/plugins/sunburst';
+import am4themes_animated from '@amcharts/amcharts4/themes/animated';
+import { PieceOfChart } from 'pages/main/content/statistics/index.type';
+
+am4core.useTheme(am4themes_animated);
+
+interface IStatistics {
+  data: Array<PieceOfChart>;
+}
+
+export const Statistics: React.FC<IStatistics> = (props) => {
+  const chart = useRef(null);
+
+  useLayoutEffect(() => {
+    // create chart
+    const x = am4core.create('chartdiv', am4plugins_sunburst.Sunburst);
+    x.padding(0, 0, 0, 0);
+    x.radius = am4core.percent(98);
+
+    x.data = props.data;
+
+    x.colors.step = 2;
+    x.fontSize = 11;
+    x.innerRadius = am4core.percent(10);
+
+    // define data fields
+    x.dataFields.value = 'value';
+    x.dataFields.name = 'name';
+    x.dataFields.children = 'children';
+
+    const level0SeriesTemplate = new am4plugins_sunburst.SunburstSeries();
+    level0SeriesTemplate.hiddenInLegend = false;
+    x.seriesTemplates.setKey('0', level0SeriesTemplate);
+
+    // this makes labels to be hidden if they don't fit
+    level0SeriesTemplate.labels.template.truncate = true;
+    level0SeriesTemplate.labels.template.hideOversized = true;
+
+    level0SeriesTemplate.labels.template.adapter.add('rotation', function (rotation, target) {
+      target.maxWidth = target.dataItem.slice.radius - target.dataItem.slice.innerRadius - 10;
+      target.maxHeight = Math.abs(
+        ((target.dataItem.slice.arc * (target.dataItem.slice.innerRadius + target.dataItem.slice.radius)) / 2) *
+          am4core.math.RADIANS
+      );
+
+      return rotation;
+    });
+
+    const level1SeriesTemplate = level0SeriesTemplate.clone();
+    x.seriesTemplates.setKey('1', level1SeriesTemplate);
+    level1SeriesTemplate.fillOpacity = 0.75;
+    level1SeriesTemplate.hiddenInLegend = true;
+
+    const level2SeriesTemplate = level0SeriesTemplate.clone();
+    x.seriesTemplates.setKey('2', level2SeriesTemplate);
+    level2SeriesTemplate.fillOpacity = 0.5;
+    level2SeriesTemplate.hiddenInLegend = true;
+
+    x.legend = new am4charts.Legend();
+
+    chart.current = x;
+
+    return () => {
+      x.dispose();
+    };
+  }, []);
+
+  return <div id="chartdiv" style={{ width: '100%', height: '500px' }} />;
+};

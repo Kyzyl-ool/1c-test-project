@@ -1,5 +1,5 @@
 import { sha256 } from 'js-sha256';
-import { PASSWORD_HASH } from 'config/index';
+import { PASSWORD_HASH } from './config';
 
 export const validate = (password: string): boolean => {
   return sha256(password) === PASSWORD_HASH;

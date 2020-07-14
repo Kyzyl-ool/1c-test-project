@@ -1,0 +1,22 @@
+@import "~styles/palette";
+
+.header-text {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0px;
+
+  &_green {
+    color: $success-color !important;
+  }
+
+  &_black {
+    color: $heading-color !important;
+  }
+
+  &_white {
+    color: $white-color !important;
+  }
+}

@@ -1,0 +1,1 @@
+export const RECORD_ADDING_NEW = 'RECORD_ADDING_NEW';

@@ -1,6 +1,7 @@
 import { applyMiddleware, combineReducers, createStore, compose } from 'redux';
 import thunk from 'redux-thunk';
-import Auth from 'store/reducers/auth.reducer';
+import { record } from 'store/reducers/record.reducer';
+import { RecordStateType } from 'store/types/record.type';
 
 let composeEnhancers = null;
 const tmp = '__REDUX_DEVTOOLS_EXTENSION_COMPOSE__';
@@ -17,9 +18,13 @@ if (window) {
 
 const enhancer = composeEnhancers(applyMiddleware(thunk));
 
+export interface IRootReducer {
+  record: RecordStateType;
+}
+
 export default function (initialState = {}) {
   const rootReducer = combineReducers({
-    auth: Auth
+    record
   });
 
   return createStore(rootReducer, initialState, enhancer);

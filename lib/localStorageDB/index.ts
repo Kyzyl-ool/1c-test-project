@@ -18,7 +18,7 @@ const tables: Array<Table> = [
   },
   {
     name: 'records',
-    fields: ['name', 'amount', 'categoryId', 'type']
+    fields: ['name', 'amount', 'categoryId', 'time']
   },
   {
     name: 'categories',

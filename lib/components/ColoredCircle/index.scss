@@ -1,0 +1,22 @@
+$small-size: 12px;
+$medium-size: 16px;
+$large-size: 24px;
+
+.mf-colored-circle {
+  border-radius: 50%;
+
+  &_small {
+    width: $small-size;
+    height: $small-size;
+  }
+
+  &_medium {
+    width: $medium-size;
+    height: $medium-size;
+  }
+
+  &_large {
+    width: $large-size;
+    height: $large-size;
+  }
+}

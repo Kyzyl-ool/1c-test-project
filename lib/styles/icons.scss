@@ -1,0 +1,24 @@
+@import "~styles/palette.scss";
+
+.icon {
+  box-sizing: border-box;
+  font-size: 24px;
+
+  &_small {
+    font-size: 16px;
+  }
+
+  &_large {
+    font-size: 32px;
+  }
+
+  &_black {
+    color: $heading-color!important;
+  }
+
+  &_logo {
+    height: 20px;
+    width: 20px;
+  }
+}
+

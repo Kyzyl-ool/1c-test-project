@@ -11,7 +11,6 @@ import { initDB } from './localStorageDB';
 const { ErrorBoundary } = Alert;
 
 const store = configureStore({});
-initDB();
 
 ReactDOM.render(
   <ErrorBoundary>

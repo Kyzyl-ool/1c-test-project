@@ -34,7 +34,8 @@ module.exports = {
       config: path.resolve(__dirname, 'lib/config/'),
       hoc: path.resolve(__dirname, 'lib/hoc/'),
       hooks: path.resolve(__dirname, 'lib/hooks/'),
-      store: path.resolve(__dirname, 'lib/store/')
+      store: path.resolve(__dirname, 'lib/store/'),
+      styles: path.resolve(__dirname, 'lib/styles/')
     }
   },
   module: {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input } from 'antd';
+import { Form, Input, notification } from 'antd';
 import { sha256 } from 'js-sha256';
 import * as H from 'history';
 import { useHistory } from 'react-router-dom';
@@ -18,11 +18,14 @@ export const AuthPage: React.FC = (props) => {
       });
       localDB.commit();
       history.push('/');
+      notification.success({
+        message: 'Успешная авторизация'
+      });
     }
   };
 
   return (
-    <Form onFinish={onFinish}>
+    <Form onFinish={onFinish} className={'mf-form mf-form_bordered'}>
       <Form.Item label={'Пароль'} name={'password'}>
         <Input type={'password'} placeholder={'Введите пароль'} />
       </Form.Item>
