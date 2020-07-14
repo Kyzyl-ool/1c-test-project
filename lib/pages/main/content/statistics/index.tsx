@@ -3,7 +3,7 @@ import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import * as am4plugins_sunburst from '@amcharts/amcharts4/plugins/sunburst';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
-import { PieceOfChart } from 'pages/main/Content/statistics/index.type';
+import { PieceOfChart } from 'pages/main/content/statistics/index.type';
 
 am4core.useTheme(am4themes_animated);
 

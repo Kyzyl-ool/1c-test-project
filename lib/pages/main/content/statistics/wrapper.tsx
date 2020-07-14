@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Statistics } from 'pages/main/Content/statistics/index';
+import { Statistics } from 'pages/main/content/statistics/index';
 import Typography from 'components/Typography';
 import useSWR from 'swr/esm/use-swr';
 import { localDB } from '../../../../localStorageDB';

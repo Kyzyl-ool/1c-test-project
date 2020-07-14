@@ -4,8 +4,8 @@ import { validateHash } from '../../auth';
 import * as H from 'history';
 import { useHistory } from 'react-router-dom';
 import { notification, Layout } from 'antd';
-import { Content } from 'pages/main/Content';
-import { Sider } from 'pages/main/Sider';
+import { Content } from 'pages/main/content';
+import { Sider } from 'pages/main/sider';
 import './index.scss';
 import Typography from 'components/Typography';
 

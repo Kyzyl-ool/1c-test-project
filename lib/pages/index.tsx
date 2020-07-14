@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatisticsWrapper } from 'pages/main/Content/statistics/wrapper';
+import { StatisticsWrapper } from 'pages/main/content/statistics/wrapper';
 import { RecordsPage } from './records';
 import { SettingsPage } from 'pages/settings';
 
