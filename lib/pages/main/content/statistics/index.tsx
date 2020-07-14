@@ -3,21 +3,23 @@ import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import * as am4plugins_sunburst from '@amcharts/amcharts4/plugins/sunburst';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
-import { PieceOfChart } from 'pages/main/content/statistics/index.type';
+import { PieceOfChart } from 'pages/main/Content/statistics/index.type';
 
 am4core.useTheme(am4themes_animated);
 
 interface IStatistics {
   data: Array<PieceOfChart>;
+  componentId: string;
 }
 
 export const Statistics: React.FC<IStatistics> = (props) => {
+  const { componentId, ...rest } = props;
   const chart = useRef(null);
 
   useLayoutEffect(() => {
     // create chart
-    const x = am4core.create('chartdiv', am4plugins_sunburst.Sunburst);
-    x.padding(0, 0, 0, 0);
+    const x = am4core.create(componentId, am4plugins_sunburst.Sunburst);
+    x.padding(50, 0, 100, 0);
     x.radius = am4core.percent(98);
 
     x.data = props.data;
@@ -53,13 +55,13 @@ export const Statistics: React.FC<IStatistics> = (props) => {
     x.seriesTemplates.setKey('1', level1SeriesTemplate);
     level1SeriesTemplate.fillOpacity = 0.75;
     level1SeriesTemplate.hiddenInLegend = true;
+    level1SeriesTemplate.labels.template.inside = false;
+    level1SeriesTemplate.labels.template.fill = am4core.color('#000');
+    level1SeriesTemplate.labels.template.text = '{category}: {value.value}₽';
 
-    const level2SeriesTemplate = level0SeriesTemplate.clone();
-    x.seriesTemplates.setKey('2', level2SeriesTemplate);
-    level2SeriesTemplate.fillOpacity = 0.5;
-    level2SeriesTemplate.hiddenInLegend = true;
-
-    x.legend = new am4charts.Legend();
+    const legend = new am4charts.Legend();
+    legend.padding(50, 0, 0, 0);
+    x.legend = legend;
 
     chart.current = x;
 
@@ -68,5 +70,5 @@ export const Statistics: React.FC<IStatistics> = (props) => {
     };
   }, []);
 
-  return <div id="chartdiv" style={{ width: '100%', height: '500px' }} />;
+  return <div id={componentId} style={{ width: '100%', height: '500px' }} />;
 };

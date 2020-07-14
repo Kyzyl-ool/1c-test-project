@@ -86,6 +86,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin({patterns: [{from: './public/manifest.json', to: 'public/manifest.json'}]}),
     new CopyWebpackPlugin({patterns: [{from: './public/favicon.ico', to: 'public/favicon.ico'}]}),
+    new CopyWebpackPlugin({patterns: [{from: './public/images', to: 'public/images'}]}),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({filename: 'app.css'}),
     new webpack.HashedModuleIdsPlugin(),

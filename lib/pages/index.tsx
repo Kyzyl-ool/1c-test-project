@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatisticsWrapper } from './main/content/statistics/wrapper';
+import { StatisticsWrapper } from 'pages/main/Content/statistics/wrapper';
 import { RecordsPage } from './records';
 import { SettingsPage } from 'pages/settings';
 
@@ -18,7 +18,7 @@ export const pages: Page[] = [
   {
     path: '/statistics',
     content: <StatisticsWrapper />,
-    name: 'Статистика'
+    name: 'Структура'
   },
   {
     path: '/records',

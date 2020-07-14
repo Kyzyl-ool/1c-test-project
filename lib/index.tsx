@@ -6,7 +6,6 @@ import { Alert } from 'antd';
 import { Provider } from 'react-redux';
 import configureStore from 'store/configureStore';
 import 'antd/dist/antd.css';
-import { initDB } from './localStorageDB';
 
 const { ErrorBoundary } = Alert;
 

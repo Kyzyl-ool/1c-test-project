@@ -1,0 +1,9 @@
+.charts-wrapper {
+  display: flex;
+  justify-content: space-between;
+
+  &__left, &__right {
+    width: 100%;
+    text-align: center;
+  }
+}
