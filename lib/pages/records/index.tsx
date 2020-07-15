@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useSWR, { mutate } from 'swr/esm/use-swr';
 import { localDB } from '../../localStorageDB';
 import { List, Button, Form, Input, Select, Radio, Space, Table, Tag } from 'antd';
@@ -8,6 +8,7 @@ import { addingNewAction } from 'store/actions/record.action';
 import { useTypedSelector } from 'hooks/typedSelector';
 import { Categories } from 'pages/categories';
 import { ColoredCircle } from 'components/ColoredCircle';
+import { ModalXLSX } from 'pages/records/modal-xlsx';
 
 const { Text, Title } = Typography;
 
@@ -84,6 +85,7 @@ export const RecordsPage: React.FC = (props) => {
   const { data: categoriesRows } = useSWR('categories', (key: string) => localDB.queryAll(key, {}), {});
   const { isCreatingNew } = useTypedSelector((state) => state.record);
   const dispatch = useDispatch();
+  const [showXLSXModal, setShowXLSXModal] = useState(false);
 
   const onAddRecord = async (values) => {
     localDB.insert('records', {
@@ -180,9 +182,17 @@ export const RecordsPage: React.FC = (props) => {
             </Form.Item>
           </Form>
         ) : (
-          <Button ghost type={'primary'} onClick={() => dispatch(addingNewAction())}>
-            + Добавить новую запись
-          </Button>
+          <>
+            <Button ghost type={'primary'} onClick={() => dispatch(addingNewAction())}>
+              + Добавить новую запись
+            </Button>
+            <Button onClick={() => setShowXLSXModal(true)}>Импорт записей из XLSX</Button>
+            <ModalXLSX
+              visible={showXLSXModal}
+              onOk={() => setShowXLSXModal(false)}
+              onCancel={() => setShowXLSXModal(false)}
+            />
+          </>
         )}
         <Categories categoriesRows={categoriesRows} />
       </Space>

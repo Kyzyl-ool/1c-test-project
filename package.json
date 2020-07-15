@@ -16,6 +16,7 @@
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
+    "read-excel-file": "^4.0.6",
     "redux-thunk": "^2.3.0",
     "swr": "^0.2.3"
   },
