@@ -4,7 +4,6 @@ import { Route, Redirect } from 'react-router-dom';
 import { Switch } from 'react-router-dom';
 import { MainPage } from 'pages/main';
 import './App.scss';
-import { initDB } from './localStorageDB';
 
 const App: React.FC = () => {
   return (

@@ -1,22 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import App from './App';
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-import configureStore from 'store/configureStore';
+import { AuthPage } from 'pages/auth';
 
-describe('App', () => {
-  const store = configureStore({});
-
+describe('AuthPage', () => {
   it('should render without crash', function () {
-    const appWrapper = shallow(
-      <BrowserRouter>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </BrowserRouter>
-    );
+    const wrapper = shallow(<AuthPage />);
 
-    expect(() => appWrapper.render()).not.toThrowError();
+    expect(() => wrapper.render()).not.toThrowError();
   });
 });

@@ -11,30 +11,37 @@ module.exports = {
         "ts",
         "jsx",
         "js",
+        "scss"
     ],
     testMatch: [
         "**/__tests__/**/*.[jt]s?(x)",
         "**/?(*.)+(spec|test).[tj]s?(x)"
     ],
     transformIgnorePatterns: [
-        "[/\\\\]node_modules[/\\\\](?!@amcharts/).+\\.js$",
-        "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
+        // ".*\\/node_modules\\/(?!@amcharts\\/.*\\.js)",
+        "node_modules",
         "^.+\\.module\\.(css|sass|scss)$"
     ],
     testPathIgnorePatterns: [
-        "/node_modules/"
+        "<rootDir>/(build|docs|node_modules)/",
+        "index.test.tsx"
     ],
-    "transform": {
-        "^.+\\.[t|j]sx?$": "ts-jest",
-        "^.+\\.(css|styl|less|sass|scss)$": "jest-transform-css"
+    testEnvironment: 'jsdom',
+    transform: {
+        // "^.+\\.[t|j]sx?$": "ts-jest",
+        "^.+\\.[t|j]sx?$": "babel-jest",
+        ".+\\.(css|styl|less|sass|scss)$": "jest-css-modules-transform"
     },
-    verbose: false,
+    verbose: true,
     setupFilesAfterEnv: ["<rootDir>/setupTests.js"],
     prettierPath: '<rootDir>/node_modules/prettier',
     globals: {
-        // window: {},
         "ts-jest": {
             "tsConfig": '<rootDir>/tsconfig.json',
         }
-    }
+    },
+    // moduleNameMapper: {
+    //     "^@styles(.*)$": "<rootDir>/lib/styles$1",
+    //     // "^@components(.*)$": "<rootDir>/shared/components$1"
+    // }
 };
