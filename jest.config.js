@@ -12,7 +12,6 @@ module.exports = {
         "jsx",
         "js",
     ],
-    testEnvironment: "jest-environment-jsdom-fourteen",
     testMatch: [
         "**/__tests__/**/*.[jt]s?(x)",
         "**/?(*.)+(spec|test).[tj]s?(x)"
@@ -23,7 +22,7 @@ module.exports = {
         "^.+\\.module\\.(css|sass|scss)$"
     ],
     testPathIgnorePatterns: [
-        "<rootDir>/(node_modules)/"
+        "/node_modules/"
     ],
     "transform": {
         "^.+\\.[t|j]sx?$": "ts-jest",
@@ -33,7 +32,7 @@ module.exports = {
     setupFilesAfterEnv: ["<rootDir>/setupTests.js"],
     prettierPath: '<rootDir>/node_modules/prettier',
     globals: {
-        window: {},
+        // window: {},
         "ts-jest": {
             "tsConfig": '<rootDir>/tsconfig.json',
         }
