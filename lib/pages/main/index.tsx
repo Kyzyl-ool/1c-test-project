@@ -15,7 +15,8 @@ export const MainPage: React.FC = (props) => {
   const history: H.History = useHistory();
 
   useEffect(() => {
-    const notifyError = () => {
+    const handleUnauthorized = () => {
+      history.push('/auth');
       notification.error({
         message: 'Не авторизован',
         description: 'Необходимо пройти авторизацию'
@@ -25,11 +26,10 @@ export const MainPage: React.FC = (props) => {
     if (localDB.tableExists('auth')) {
       const authTableRows = localDB.queryAll('auth', {});
       if (!authTableRows.length || !validateHash(authTableRows[0].password)) {
-        history.push('/auth');
-        notifyError();
+        handleUnauthorized();
       }
     } else {
-      notifyError();
+      handleUnauthorized();
     }
   }, []);
 
