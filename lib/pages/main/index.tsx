@@ -15,20 +15,21 @@ export const MainPage: React.FC = (props) => {
   const history: H.History = useHistory();
 
   useEffect(() => {
-    if (localDB.tableExists('auth')) {
-      const authTableRows = localDB.queryAll('auth', {});
-      if (!authTableRows.length || !validateHash(authTableRows[0].password)) {
-        history.push('/auth');
-        notification.error({
-          message: 'Не авторизован',
-          description: 'Необходимо пройти авторизацию'
-        });
-      }
-    } else {
+    const notifyError = () => {
       notification.error({
         message: 'Не авторизован',
         description: 'Необходимо пройти авторизацию'
       });
+    };
+
+    if (localDB.tableExists('auth')) {
+      const authTableRows = localDB.queryAll('auth', {});
+      if (!authTableRows.length || !validateHash(authTableRows[0].password)) {
+        history.push('/auth');
+        notifyError();
+      }
+    } else {
+      notifyError();
     }
   }, []);
 
