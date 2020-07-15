@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form, Input, notification, Button, Col } from 'antd';
 import { sha256 } from 'js-sha256';
 import * as H from 'history';
 import { useHistory } from 'react-router-dom';
-import { localDB } from '../../localStorageDB';
+import { initDB, localDB } from '../../localStorageDB';
 import { validate } from '../../auth';
 import './index.scss';
 
@@ -11,6 +11,10 @@ type FormFieldsType = Record<'password', string>;
 
 export const AuthPage: React.FC = (props) => {
   const history: H.History = useHistory();
+
+  useEffect(() => {
+    initDB();
+  }, []);
 
   const onFinish = (values: FormFieldsType) => {
     if (validate(values.password)) {

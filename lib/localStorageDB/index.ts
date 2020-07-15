@@ -27,7 +27,7 @@ const tables: Array<Table> = [
 ];
 
 export const initDB = (): void => {
-  if (localDB.isNew()) {
+  if (!localDB.tableExists('auth')) {
     tables.forEach((value) => localDB.createTable(value.name, value.fields));
     localDB.commit();
   } else {

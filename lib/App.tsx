@@ -7,10 +7,6 @@ import './App.scss';
 import { initDB } from './localStorageDB';
 
 const App: React.FC = () => {
-  useEffect(() => {
-    initDB();
-  }, []);
-
   return (
     <Switch>
       <Route path={'/auth'}>

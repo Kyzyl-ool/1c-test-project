@@ -5,7 +5,7 @@ import useSWR, { mutate } from 'swr/esm/use-swr';
 import { localDB } from '../../localStorageDB';
 const { Text, Title } = Typography;
 import { CirclePicker } from 'react-color';
-import { RGBToHex } from '../../utils/RGBToHex';
+import { RGBToHex } from '../../utils/color';
 import { ColoredCircle } from 'components/ColoredCircle';
 
 interface ICategories {

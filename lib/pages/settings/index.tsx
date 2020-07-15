@@ -4,6 +4,7 @@ import { Button, Modal } from 'antd';
 import { initDB, localDB } from '../../localStorageDB';
 import * as H from 'history';
 import { useHistory } from 'react-router-dom';
+import { mutate } from 'swr';
 
 const { Text, Title } = Typography;
 
@@ -20,7 +21,13 @@ export const SettingsPage: React.FC = (props) => {
       <Modal
         onCancel={() => setShowModal(false)}
         onOk={() => {
-          localDB.drop();
+          localDB.dropTable('auth');
+          localDB.dropTable('categories');
+          localDB.dropTable('records');
+          localDB.commit();
+          mutate('auth');
+          mutate('categories');
+          mutate('records');
           setShowModal(false);
           history.push('/auth');
         }}
